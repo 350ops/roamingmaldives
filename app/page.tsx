@@ -18,7 +18,7 @@ export default function Home() {
             <div>
               <span className="eyebrow">Pre-arrival mobile setup</span>
               <h1 className="display-hero mt-7 max-w-4xl">
-                A quieter, more reliable way to get online before you reach the beach 🏝️
+                Get online before you reach the beach 🏝️
               </h1>
               <p className="body-large mt-7 max-w-2xl">
                 Install your eSIM before you travel, then land with local data ready for resort
