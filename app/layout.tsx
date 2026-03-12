@@ -1,5 +1,5 @@
 import type {Metadata} from 'next';
-import { Marcellus, Source_Sans_3 } from 'next/font/google';
+import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css'; // Global styles
 import { Navbar } from '@/components/Navbar';
@@ -7,16 +7,18 @@ import { Footer } from '@/components/Footer';
 import { WhatsAppCTA } from '@/components/WhatsAppCTA';
 import { siteConfig } from '@/lib/site';
 
-const displayFont = Marcellus({
+const displayFont = localFont({
+  src: '../public/fonts/Marcellus-Regular.ttf',
   variable: '--font-display',
   weight: '400',
-  subsets: ['latin'],
+  display: 'swap',
 });
 
-const bodyFont = Source_Sans_3({
+const bodyFont = localFont({
+  src: '../public/fonts/SourceSans3-Variable.ttf',
   variable: '--font-body',
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: '400 700',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
