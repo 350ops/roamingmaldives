@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
-import { siteConfig } from '@/lib/site';
+import { BrandWordmark } from '@/components/BrandWordmark';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,13 +19,12 @@ export function Navbar() {
       <div className="page-shell">
         <div className="flex min-h-20 items-center justify-between gap-6">
           <div className="flex items-center">
-            <Link href="/" className="flex flex-col leading-none">
-              <span className="font-[family:var(--font-display)] text-[1.7rem] tracking-[-0.05em] text-[color:var(--foreground)]">
-                {siteConfig.name}
-              </span>
-              <span className="mt-1 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-[color:var(--foreground-muted)]">
-                Maldives Travel eSIM
-              </span>
+            <Link href="/" className="leading-none">
+              <BrandWordmark
+                className="font-[family:var(--font-display)] text-[1.7rem] tracking-[-0.05em] text-[color:var(--foreground)]"
+                leadClassName="font-normal"
+                trailClassName="font-semibold"
+              />
             </Link>
           </div>
 

@@ -1,133 +1,211 @@
 import Link from 'next/link';
-import Image from 'next/image';
-import { CheckCircle2, Smartphone, Zap, Shield, Globe2, Wifi } from 'lucide-react';
+import {
+  ArrowRight,
+  CheckCircle2,
+  Globe2,
+  ShieldCheck,
+  Signal,
+  Smartphone,
+  Waves,
+} from 'lucide-react';
 
 export default function Home() {
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="https://picsum.photos/seed/maldives/1920/1080"
-            alt="Maldives aerial view"
-            fill
-            className="object-cover object-center"
-            priority
-            referrerPolicy="no-referrer"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
-        </div>
-        
-        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/20 text-white backdrop-blur-sm border border-white/30">
-              Yacht Guests
-            </span>
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/20 text-white backdrop-blur-sm border border-white/30">
-              Resort Visitors
-            </span>
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/20 text-white backdrop-blur-sm border border-white/30">
-              Gulf Travellers
-            </span>
-          </div>
-          
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6 drop-shadow-lg">
-            Stay Connected in the <span className="text-blue-400">Maldives</span>
-          </h1>
-          <p className="mt-4 text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-10 font-light drop-shadow-md">
-            Premium eSIM data plans for your island getaway. Instant activation, reliable 4G/5G coverage, and zero roaming fees.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link
-              href="/signup"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1"
-            >
-              Get Early Access
-            </Link>
-            <Link
-              href="/device-checker"
-              className="bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/30 px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg hover:-translate-y-1"
-            >
-              Check Device Compatibility
-            </Link>
-          </div>
-        </div>
-      </section>
+      <section className="section-shell-lg overflow-hidden">
+        <div className="page-shell">
+          <div className="grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
+            <div>
+              <span className="eyebrow">Pre-arrival mobile setup</span>
+              <h1 className="display-hero mt-7 max-w-4xl">
+                A quieter, more reliable way to get online before you reach the beach 🏝️
+              </h1>
+              <p className="body-large mt-7 max-w-2xl">
+                Install your eSIM before you travel, then land with local data ready for resort
+                check-in, transfers, maps, and the people you need to reach.
+              </p>
 
-      {/* Trust Indicators */}
-      <section className="bg-white py-10 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm font-semibold text-gray-500 uppercase tracking-wider mb-6">
-            Trusted connectivity powered by leading networks
-          </p>
-          <div className="flex justify-center items-center gap-8 md:gap-16 flex-wrap opacity-60">
-            <div className="flex items-center gap-2 font-bold text-xl text-gray-800"><Wifi className="w-6 h-6" /> Ooredoo</div>
-            <div className="flex items-center gap-2 font-bold text-xl text-gray-800"><Globe2 className="w-6 h-6" /> Dhiraagu</div>
-            <div className="flex items-center gap-2 font-bold text-xl text-gray-800"><Zap className="w-6 h-6" /> 5G Ready</div>
-            <div className="flex items-center gap-2 font-bold text-xl text-gray-800"><Shield className="w-6 h-6" /> Secure</div>
-          </div>
-        </div>
-      </section>
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+                <Link href="/signup" className="btn-primary">
+                  Get Early Access
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link href="/device-checker" className="btn-secondary">
+                  Check Device Compatibility
+                </Link>
+              </div>
 
-      {/* How it works */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Three Simple Steps</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Get connected before your seaplane even lands. It&apos;s that easy.</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="relative flex flex-col items-center text-center group">
-              <div className="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm">
-                <Smartphone className="w-10 h-10 text-blue-600 group-hover:text-white transition-colors" />
+              <div className="mt-12 grid gap-8 border-t border-[color:var(--line)] pt-8 sm:grid-cols-3">
+                <div>
+                  <p className="muted-label">Coverage</p>
+                  <p className="mt-3 text-lg font-semibold text-[color:var(--foreground)]">
+                    Guidance across Ooredoo and Dhiraagu
+                  </p>
+                </div>
+                <div>
+                  <p className="muted-label">Use case</p>
+                  <p className="mt-3 text-lg font-semibold text-[color:var(--foreground)]">
+                    Resort stays, yacht charters, and island transfers
+                  </p>
+                </div>
+                <div>
+                  <p className="muted-label">Setup</p>
+                  <p className="mt-3 text-lg font-semibold text-[color:var(--foreground)]">
+                    Installed before departure, activated on arrival
+                  </p>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">1. Choose your plan</h3>
-              <p className="text-gray-600">Select the data bundle that fits your itinerary, whether you&apos;re here for a weekend or a month.</p>
             </div>
-            
-            <div className="relative flex flex-col items-center text-center group">
-              <div className="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm">
-                <Zap className="w-10 h-10 text-blue-600 group-hover:text-white transition-colors" />
+
+            <div className="surface-panel p-7 sm:p-9">
+              <p className="muted-label">Before you land</p>
+              <h2 className="mt-3 text-3xl">
+                What the setup should feel like
+              </h2>
+              <div className="divider-list mt-8">
+                <div className="flex gap-4 py-5">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[color:var(--accent-soft)] text-[color:var(--accent-strong)]">
+                    <Smartphone className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <h3 className="text-xl">Check your phone once</h3>
+                    <p className="body-copy mt-2">
+                      Confirm eSIM support before purchase instead of working it out at the airport.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-4 py-5">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[color:var(--accent-soft)] text-[color:var(--accent-strong)]">
+                    <Waves className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <h3 className="text-xl">Install while you still have Wi-Fi</h3>
+                    <p className="body-copy mt-2">
+                      Add the profile before departure so you are not relying on patchy arrival Wi-Fi.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-4 py-5">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[color:var(--accent-soft)] text-[color:var(--accent-strong)]">
+                    <Signal className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <h3 className="text-xl">Arrive ready to connect</h3>
+                    <p className="body-copy mt-2">
+                      Turn data on when you land and move straight to your transfer or resort.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">2. Activate eSIM</h3>
-              <p className="text-gray-600">Scan the QR code sent to your email. No physical SIM card needed. Install in seconds.</p>
-            </div>
-            
-            <div className="relative flex flex-col items-center text-center group">
-              <div className="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm">
-                <CheckCircle2 className="w-10 h-10 text-blue-600 group-hover:text-white transition-colors" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">3. Enjoy your trip</h3>
-              <p className="text-gray-600">Arrive in Male and instantly connect to the fastest local networks. Share your moments immediately.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-blue-600 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-            <defs>
-              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1"/>
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
+      <section className="section-border">
+        <div className="page-shell">
+          <div className="grid gap-8 py-8 md:grid-cols-4">
+            <div>
+              <p className="muted-label">Networks</p>
+              <p className="mt-3 text-lg font-semibold">Ooredoo and Dhiraagu guidance</p>
+            </div>
+            <div>
+              <p className="muted-label">Support</p>
+              <p className="mt-3 text-lg font-semibold">Direct help before purchase and on arrival</p>
+            </div>
+            <div>
+              <p className="muted-label">Use</p>
+              <p className="mt-3 text-lg font-semibold">Data for maps, messaging, tethering, and check-in</p>
+            </div>
+            <div>
+              <p className="muted-label">Compatibility</p>
+              <p className="mt-3 text-lg font-semibold">Device checker for current iPhone, Pixel, and Galaxy models</p>
+            </div>
+          </div>
         </div>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Ready for your island adventure?</h2>
-          <p className="text-xl text-blue-100 mb-10">Don&apos;t waste time queuing for a local SIM at the airport. Get your eSIM sorted today.</p>
-          <Link
-            href="/signup"
-            className="inline-block bg-white text-blue-600 hover:bg-gray-50 px-8 py-4 rounded-full text-lg font-bold transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1"
-          >
-            Get Early Access Now
-          </Link>
+      </section>
+
+      <section className="section-shell">
+        <div className="page-shell">
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+            <div className="max-w-md">
+              <span className="eyebrow">How it works</span>
+              <h2 className="section-title mt-6">Set it up once. Use it when you need it.</h2>
+              <p className="body-large mt-6">
+                The process should be clear long before you board. The aim is simple: less airport
+                friction, fewer roaming surprises, and a smoother arrival.
+              </p>
+            </div>
+
+            <div className="divider-list">
+              <div className="grid gap-6 py-6 md:grid-cols-[auto_1fr_auto] md:items-start">
+                <span className="text-4xl font-[family:var(--font-display)] text-[color:var(--accent)]">01</span>
+                <div>
+                  <h3 className="text-2xl">Choose the plan that fits your stay</h3>
+                  <p className="body-copy mt-3">
+                    Pick a bundle based on trip length and how much data you expect to use across
+                    the resort, transfers, and time away from Wi-Fi.
+                  </p>
+                </div>
+                <Globe2 className="h-6 w-6 text-[color:var(--foreground-muted)]" />
+              </div>
+
+              <div className="grid gap-6 py-6 md:grid-cols-[auto_1fr_auto] md:items-start">
+                <span className="text-4xl font-[family:var(--font-display)] text-[color:var(--accent)]">02</span>
+                <div>
+                  <h3 className="text-2xl">Install the eSIM before departure</h3>
+                  <p className="body-copy mt-3">
+                    Scan the QR code while you still have a stable connection and keep it ready for
+                    arrival day.
+                  </p>
+                </div>
+                <CheckCircle2 className="h-6 w-6 text-[color:var(--foreground-muted)]" />
+              </div>
+
+              <div className="grid gap-6 py-6 md:grid-cols-[auto_1fr_auto] md:items-start">
+                <span className="text-4xl font-[family:var(--font-display)] text-[color:var(--accent)]">03</span>
+                <div>
+                  <h3 className="text-2xl">Turn on data when you land</h3>
+                  <p className="body-copy mt-3">
+                    Connect when you arrive in Male and continue through transfers, check-in, and
+                    the first message home.
+                  </p>
+                </div>
+                <ShieldCheck className="h-6 w-6 text-[color:var(--foreground-muted)]" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell">
+        <div className="page-shell">
+          <div className="rounded-[2rem] bg-[#172327] px-6 py-10 text-[#f5efe4] sm:px-10 sm:py-12">
+            <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+              <div className="max-w-2xl">
+                <p className="muted-label text-[rgba(245,239,228,0.56)]">Planning ahead</p>
+                <h2 className="mt-4 text-[2.5rem] leading-[0.98] text-[#f5efe4] sm:text-[3.2rem]">
+                  Sort your connectivity before the airport queue becomes part of the trip.
+                </h2>
+                <p className="mt-5 text-lg leading-8 text-[rgba(245,239,228,0.78)]">
+                  Check compatibility now and leave your details if you want launch updates,
+                  pricing, and setup instructions sent before your departure.
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Link href="/signup" className="btn-primary">
+                  Join the Early List
+                </Link>
+                <Link
+                  href="/faq"
+                  className="btn-secondary border-[rgba(245,239,228,0.18)] bg-[rgba(255,255,255,0.06)] text-[#f5efe4] hover:bg-[rgba(255,255,255,0.12)]"
+                >
+                  Read Common Questions
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

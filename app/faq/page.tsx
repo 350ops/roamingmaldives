@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import Link from 'next/link';
+import { siteConfig } from '@/lib/site';
 
 const faqs = [
   {
@@ -43,63 +44,60 @@ export default function FAQ() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-16">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-gray-900 mb-4">Frequently Asked Questions</h1>
-          <p className="text-lg text-gray-600">
-            Everything you need to know about using an eSIM in the Maldives.
+    <div className="section-shell min-h-screen">
+      <div className="page-shell max-w-4xl">
+        <div className="max-w-2xl">
+          <span className="eyebrow">Common questions</span>
+          <h1 className="display-title mt-6">What travellers usually ask before they install a Maldives eSIM.</h1>
+          <p className="body-large mt-6">
+            Straight answers on compatibility, timing, coverage, hotspot use, and what to expect
+            once you arrive.
           </p>
         </div>
 
-        <div className="space-y-4">
+        <div className="divider-list mt-12 rounded-[1.5rem] border border-[color:var(--line)] bg-[rgba(255,253,249,0.78)] px-6 sm:px-8">
           {faqs.map((faq, index) => (
-            <div 
-              key={index} 
-              className="bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-200 hover:border-blue-300 shadow-sm"
-            >
+            <div key={index} className="py-2">
               <button
-                className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"
+                className="flex w-full items-start justify-between gap-6 py-5 text-left focus:outline-none"
                 onClick={() => toggleFAQ(index)}
                 aria-expanded={openIndex === index}
               >
-                <span className="font-semibold text-gray-900 text-lg pr-8">{faq.question}</span>
+                <span className="pr-8 text-xl leading-8 text-[color:var(--foreground)]">{faq.question}</span>
                 {openIndex === index ? (
-                  <ChevronUp className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                  <ChevronUp className="mt-1 h-5 w-5 shrink-0 text-[color:var(--accent)]" />
                 ) : (
-                  <ChevronDown className="w-5 h-5 text-gray-400 flex-shrink-0" />
+                  <ChevronDown className="mt-1 h-5 w-5 shrink-0 text-[color:var(--foreground-muted)]" />
                 )}
               </button>
-              
-              <div 
-                className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${
-                  openIndex === index ? 'max-h-96 pb-5 opacity-100' : 'max-h-0 opacity-0'
+
+              <div
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  openIndex === index ? 'max-h-96 pb-6 opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                <p className="body-copy max-w-3xl pr-8">{faq.answer}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 text-center bg-blue-50 rounded-2xl p-8 border border-blue-100">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Still have questions?</h2>
-          <p className="text-gray-600 mb-6">Our support team is ready to help you get connected.</p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a 
-              href="https://wa.me/1234567890?text=I'm%20interested%20in%20a%20Maldives%20eSIM" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl font-semibold transition-colors shadow-sm"
-            >
-              Chat on WhatsApp
-            </a>
-            <a 
-              href="mailto:support@roamingmaldives.com"
-              className="bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 px-6 py-3 rounded-xl font-semibold transition-colors shadow-sm"
-            >
+        <div className="surface-card mt-16 grid gap-6 p-7 sm:grid-cols-[1fr_auto] sm:items-end sm:p-8">
+          <div className="max-w-2xl">
+            <p className="muted-label">Need a direct answer</p>
+            <h2 className="mt-3 text-2xl">Send the support team your question before you travel.</h2>
+            <p className="body-copy mt-3">
+              If you are unsure about device setup, timing, or network coverage for your itinerary,
+              we can point you in the right direction.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <a href={siteConfig.supportMailto} className="btn-primary">
               Email Support
             </a>
+            <Link href="/device-checker" className="btn-secondary">
+              Recheck My Device
+            </Link>
           </div>
         </div>
       </div>

@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { Search, Smartphone, Phone, AlertCircle, CheckCircle2 } from 'lucide-react';
 import devicesData from '@/data/devices-2026.json';
-import Link from 'next/link';
 
 export default function DeviceChecker() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -21,105 +20,129 @@ export default function DeviceChecker() {
   });
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-gray-900 mb-4">Check Device Compatibility</h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Ensure your phone supports eSIM before purchasing a plan. Most modern smartphones are compatible.
+    <div className="section-shell min-h-screen">
+      <div className="page-shell">
+        <div className="max-w-3xl">
+          <span className="eyebrow">Before purchase</span>
+          <h1 className="display-title mt-6">Check whether your phone is ready for eSIM.</h1>
+          <p className="body-large mt-6 max-w-2xl">
+            Most recent iPhone, Pixel, and Galaxy models are supported. Use the quick dial method
+            first, then search our device list if you want to confirm a specific model.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {/* Method 1: Dial Method */}
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-            <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-              <Phone className="w-6 h-6 text-blue-600" />
+        <div className="mt-12 grid gap-8 lg:grid-cols-[0.76fr_1.24fr] lg:items-start">
+          <div className="surface-muted p-7 sm:p-8">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[color:var(--accent-soft)] text-[color:var(--accent-strong)]">
+              <Phone className="h-5 w-5" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Method 1: The Quick Check</h2>
-            <p className="text-gray-600 mb-6">The fastest way to check if your device supports eSIM is to look for an EID number in your settings.</p>
-            
-            <ol className="space-y-4 mb-6">
+            <h2 className="mt-6 text-2xl">Quick check</h2>
+            <p className="body-copy mt-3">
+              The fastest way to confirm support is to look for an EID number directly on the
+              device.
+            </p>
+
+            <ol className="mt-8 space-y-4">
               <li className="flex gap-3">
-                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-sm font-bold">1</span>
-                <span className="text-gray-700">Open your phone app and dial <strong className="text-gray-900 bg-gray-100 px-2 py-1 rounded">*#06#</strong></span>
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[color:var(--accent-soft)] text-sm font-semibold text-[color:var(--accent-strong)]">1</span>
+                <span className="body-copy">Open your phone app and dial <strong className="rounded bg-white/80 px-2 py-1 text-[color:var(--foreground)]">*#06#</strong>.</span>
               </li>
               <li className="flex gap-3">
-                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-sm font-bold">2</span>
-                <span className="text-gray-700">Look for a 32-digit number labeled <strong>EID</strong>.</span>
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[color:var(--accent-soft)] text-sm font-semibold text-[color:var(--accent-strong)]">2</span>
+                <span className="body-copy">Look for a 32-digit number labeled <strong className="text-[color:var(--foreground)]">EID</strong>.</span>
               </li>
               <li className="flex gap-3">
-                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-sm font-bold">3</span>
-                <span className="text-gray-700">If you see an EID, your device supports eSIM!</span>
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[color:var(--accent-soft)] text-sm font-semibold text-[color:var(--accent-strong)]">3</span>
+                <span className="body-copy">If it appears, your device supports eSIM.</span>
               </li>
             </ol>
-            
-            <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 flex gap-3">
-              <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-amber-800">
-                <strong>Important:</strong> Your device must also be carrier-unlocked to use Roaming Maldives eSIMs.
+
+            <div className="mt-8 flex gap-3 rounded-2xl border border-[rgba(145,112,36,0.18)] bg-[rgba(201,184,157,0.18)] p-4">
+              <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-[color:#8a6e34]" />
+              <p className="text-sm leading-6 text-[color:#6f5829]">
+                Your phone also needs to be carrier-unlocked before it can use a travel eSIM.
               </p>
             </div>
           </div>
 
-          {/* Method 2: Lookup */}
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-            <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-              <Search className="w-6 h-6 text-blue-600" />
+          <div className="surface-panel p-7 sm:p-8">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="muted-label">Database search</p>
+                <h2 className="mt-3 text-2xl">Search by model</h2>
+                <p className="body-copy mt-3 max-w-2xl">
+                  Use the search and brand filter if you want a second check against our current
+                  device list.
+                </p>
+              </div>
+              <div className="hidden h-12 w-12 items-center justify-center rounded-full bg-[color:var(--accent-soft)] text-[color:var(--accent-strong)] sm:flex">
+                <Search className="h-5 w-5" />
+              </div>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Method 2: Search Device</h2>
-            <p className="text-gray-600 mb-6">Search our database of known eSIM-compatible devices for 2026.</p>
-            
-            <div className="space-y-4">
+
+            <div className="mt-8 space-y-5">
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Search className="h-5 w-5 text-gray-400" />
+                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+                  <Search className="h-5 w-5 text-[color:var(--foreground-muted)]" />
                 </div>
                 <input
                   type="text"
-                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-colors"
+                  className="field-input pl-11"
                   placeholder="e.g. iPhone 15, Galaxy S24"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
-              
+
               <div className="flex gap-2 overflow-x-auto pb-2">
-                <button 
+                <button
                   onClick={() => setSelectedBrand('All')}
-                  className={`px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${selectedBrand === 'All' ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+                  className={`rounded-full px-4 py-2 text-sm font-semibold whitespace-nowrap transition-colors ${
+                    selectedBrand === 'All'
+                      ? 'bg-[color:var(--foreground)] text-white'
+                      : 'border border-[color:var(--line)] bg-white/70 text-[color:var(--foreground-soft)] hover:bg-white'
+                  }`}
                 >
                   All
                 </button>
                 {devicesData.map(brand => (
-                  <button 
+                  <button
                     key={brand.brand}
                     onClick={() => setSelectedBrand(brand.brand)}
-                    className={`px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${selectedBrand === brand.brand ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+                    className={`rounded-full px-4 py-2 text-sm font-semibold whitespace-nowrap transition-colors ${
+                      selectedBrand === brand.brand
+                        ? 'bg-[color:var(--foreground)] text-white'
+                        : 'border border-[color:var(--line)] bg-white/70 text-[color:var(--foreground-soft)] hover:bg-white'
+                    }`}
                   >
                     {brand.brand}
                   </button>
                 ))}
               </div>
 
-              <div className="mt-4 border border-gray-200 rounded-xl overflow-hidden h-64 overflow-y-auto bg-gray-50">
+              <div className="mt-4 h-72 overflow-y-auto rounded-[1.1rem] border border-[color:var(--line)] bg-[rgba(255,253,249,0.7)]">
                 {filteredModels.length > 0 ? (
-                  <ul className="divide-y divide-gray-200">
+                  <ul className="divide-y divide-[color:var(--line)]">
                     {filteredModels.map((item, idx) => (
-                      <li key={idx} className="px-4 py-3 flex items-center justify-between bg-white hover:bg-gray-50 transition-colors">
+                      <li key={idx} className="flex items-center justify-between gap-4 px-5 py-4">
                         <div className="flex items-center gap-3">
-                          <Smartphone className="w-5 h-5 text-gray-400" />
-                          <span className="font-medium text-gray-900">{item.model}</span>
+                          <Smartphone className="h-5 w-5 text-[color:var(--foreground-muted)]" />
+                          <div>
+                            <span className="block font-semibold text-[color:var(--foreground)]">{item.model}</span>
+                            <span className="text-sm text-[color:var(--foreground-muted)]">{item.brand}</span>
+                          </div>
                         </div>
-                        <CheckCircle2 className="w-5 h-5 text-green-500" />
+                        <CheckCircle2 className="h-5 w-5 text-[color:var(--success)]" />
                       </li>
                     ))}
                   </ul>
                 ) : (
-                  <div className="h-full flex flex-col items-center justify-center p-6 text-center">
-                    <AlertCircle className="w-8 h-8 text-gray-400 mb-2" />
-                    <p className="text-gray-600 font-medium">Device not found</p>
-                    <p className="text-sm text-gray-500 mt-1">Try checking via Method 1 or contact support.</p>
+                  <div className="flex h-full flex-col items-center justify-center p-6 text-center">
+                    <AlertCircle className="mb-3 h-8 w-8 text-[color:var(--foreground-muted)]" />
+                    <p className="font-semibold text-[color:var(--foreground)]">Device not found</p>
+                    <p className="mt-1 text-sm text-[color:var(--foreground-muted)]">
+                      Try the quick check above or contact support before you buy.
+                    </p>
                   </div>
                 )}
               </div>
@@ -127,19 +150,18 @@ export default function DeviceChecker() {
           </div>
         </div>
 
-        <div className="bg-blue-600 rounded-2xl p-8 text-center text-white shadow-lg">
-          <h2 className="text-2xl font-bold mb-4">Device not supported?</h2>
-          <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-            Leave your email with us and we&apos;ll notify you when new devices are added or if we launch alternative connectivity options.
-          </p>
-          <form className="max-w-md mx-auto flex gap-2" onSubmit={(e) => e.preventDefault()}>
-            <input 
-              type="email" 
-              placeholder="Enter your email" 
-              className="flex-grow px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
-              required
-            />
-            <button type="submit" className="bg-gray-900 hover:bg-black px-6 py-3 rounded-xl font-semibold transition-colors">
+        <div className="surface-card mt-12 grid gap-6 p-6 sm:grid-cols-[1fr_auto] sm:items-end sm:p-8">
+          <div className="max-w-2xl">
+            <p className="muted-label">Still unsure</p>
+            <h2 className="mt-3 text-2xl">Leave your email and we&apos;ll review compatibility.</h2>
+            <p className="body-copy mt-3">
+              If your model is not listed yet, we can let you know when support is confirmed or
+              suggest another option.
+            </p>
+          </div>
+          <form className="flex w-full max-w-md flex-col gap-3 sm:flex-row" onSubmit={(e) => e.preventDefault()}>
+            <input type="email" placeholder="Enter your email" className="field-input sm:min-w-[18rem]" required />
+            <button type="submit" className="btn-primary whitespace-nowrap">
               Notify Me
             </button>
           </form>

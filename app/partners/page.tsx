@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Building, Users, TrendingUp, Handshake, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { siteConfig } from '@/lib/site';
 
 export default function Partners() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -19,136 +20,192 @@ export default function Partners() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Hero Section */}
-      <section className="bg-gray-900 text-white py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
-            Partner with <span className="text-blue-400">Roaming Maldives</span>
-          </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-            Enhance your guests&apos; experience with seamless connectivity. We partner with luxury resorts, yacht charters, and travel agencies to provide premium eSIM solutions.
-          </p>
-          <div className="flex justify-center gap-4">
-            <a href="#partner-form" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg hover:-translate-y-1">
-              Become a Partner
-            </a>
-            <a href="mailto:partners@roamingmaldives.com" className="bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/30 px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg hover:-translate-y-1">
-              Contact Sales
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Partner With Us?</h2>
-            <p className="text-lg text-gray-600">Provide value to your guests while generating additional revenue.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Users className="w-8 h-8 text-blue-600" />
+    <div className="min-h-screen">
+      <section className="section-shell-lg">
+        <div className="page-shell">
+          <div className="grid gap-10 rounded-[2rem] bg-[#172327] px-6 py-10 text-[#f5efe4] sm:px-10 sm:py-12 lg:grid-cols-[1.15fr_0.85fr]">
+            <div>
+              <span className="eyebrow border-[rgba(245,239,228,0.16)] bg-transparent text-[rgba(245,239,228,0.72)] before:bg-[#8bc3bf]">
+                Hospitality partnerships
+              </span>
+              <h1 className="display-title mt-6 text-[#f5efe4]">
+                Connectivity that fits the guest journey before arrival.
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-[rgba(245,239,228,0.78)]">
+                We work with resorts, yacht charters, and travel advisors who want a cleaner arrival
+                experience for their guests and a practical add-on for their booking flow.
+              </p>
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+                <a href="#partner-form" className="btn-primary">
+                  Become a Partner
+                </a>
+                <a href={siteConfig.partnersMailto} className="btn-secondary border-[rgba(245,239,228,0.16)] bg-[rgba(255,255,255,0.05)] text-[#f5efe4] hover:bg-[rgba(255,255,255,0.12)]">
+                  Contact Partnerships
+                </a>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Elevate Guest Experience</h3>
-              <p className="text-gray-600">Ensure your guests are connected from the moment they land. No more struggling with airport Wi-Fi or local SIM kiosks.</p>
             </div>
 
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <TrendingUp className="w-8 h-8 text-blue-600" />
+            <div className="surface-card bg-[rgba(255,255,255,0.07)] p-7 text-[#f5efe4] shadow-none">
+              <p className="muted-label text-[rgba(245,239,228,0.48)]">Best fit</p>
+              <div className="divider-list mt-6 border-[rgba(245,239,228,0.12)]">
+                <div className="py-4">
+                  <h2 className="text-2xl text-[#f5efe4]">Resorts and hotels</h2>
+                  <p className="mt-2 text-sm leading-6 text-[rgba(245,239,228,0.72)]">
+                    Add pre-arrival connectivity to confirmation emails and concierge planning.
+                  </p>
+                </div>
+                <div className="py-4">
+                  <h2 className="text-2xl text-[#f5efe4]">Yachts and liveaboards</h2>
+                  <p className="mt-2 text-sm leading-6 text-[rgba(245,239,228,0.72)]">
+                    Help guests board with data already set up for itineraries, crew contact, and
+                    tethering.
+                  </p>
+                </div>
+                <div className="py-4">
+                  <h2 className="text-2xl text-[#f5efe4]">Travel advisors</h2>
+                  <p className="mt-2 text-sm leading-6 text-[rgba(245,239,228,0.72)]">
+                    Offer one more useful step in the booking process without sending travellers to
+                    airport kiosks.
+                  </p>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">New Revenue Stream</h3>
-              <p className="text-gray-600">Earn competitive commissions on every eSIM sold through your unique partner link or pre-arrival booking portal.</p>
-            </div>
-
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Handshake className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Dedicated Support</h3>
-              <p className="text-gray-600">Get access to our priority partner support team, marketing materials, and a custom co-branded landing page.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Form Section */}
-      <section id="partner-form" className="py-20 bg-white border-t border-gray-100">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Partner Inquiry</h2>
-            <p className="text-lg text-gray-600">Fill out the form below and our partnerships team will be in touch within 24 hours.</p>
+      <section className="section-shell">
+        <div className="page-shell">
+          <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+            <div className="max-w-md">
+              <span className="eyebrow">Why it works</span>
+              <h2 className="section-title mt-6">Useful to guests. Practical for operators.</h2>
+              <p className="body-large mt-6">
+                This should feel like a well-run hospitality add-on, not another marketing widget.
+              </p>
+            </div>
+
+            <div className="divider-list">
+              <div className="grid gap-6 py-6 md:grid-cols-[auto_1fr]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[color:var(--accent-soft)] text-[color:var(--accent-strong)]">
+                  <Users className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="text-2xl">A smoother arrival for guests</h3>
+                  <p className="body-copy mt-3">
+                    Guests can sort data before they fly instead of queuing after a long journey or
+                    relying on inconsistent airport Wi-Fi.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid gap-6 py-6 md:grid-cols-[auto_1fr]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[color:var(--accent-soft)] text-[color:var(--accent-strong)]">
+                  <TrendingUp className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="text-2xl">Revenue that fits the booking flow</h3>
+                  <p className="body-copy mt-3">
+                    Partnerships can be structured around referral links, pre-arrival messaging, or
+                    concierge workflows depending on how your team already operates.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid gap-6 py-6 md:grid-cols-[auto_1fr]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[color:var(--accent-soft)] text-[color:var(--accent-strong)]">
+                  <Handshake className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="text-2xl">Direct operational support</h3>
+                  <p className="body-copy mt-3">
+                    Your team gets a contact point for setup questions, guest guidance, and rollout
+                    details instead of managing eSIM troubleshooting alone.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="partner-form" className="section-shell section-border">
+        <div className="page-shell max-w-4xl">
+          <div className="max-w-2xl">
+            <span className="eyebrow">Partner inquiry</span>
+            <h2 className="section-title mt-6">Tell us how your guest journey is structured.</h2>
+            <p className="body-large mt-6">
+              Share a few basics below and the partnerships team will follow up with the right setup
+              for your operation.
+            </p>
           </div>
 
           {isSubmitted ? (
-            <div className="bg-green-50 border border-green-200 rounded-2xl p-10 text-center">
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle2 className="w-10 h-10 text-green-600" />
+            <div className="surface-card mt-10 p-10 text-center">
+              <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[rgba(64,96,76,0.12)] text-[color:var(--success)]">
+                <CheckCircle2 className="h-10 w-10" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Inquiry Received!</h3>
-              <p className="text-lg text-gray-600">
-                Thank you for your interest in partnering with Roaming Maldives. A member of our team will contact you shortly to discuss opportunities.
+              <h3 className="mt-6 text-3xl">Inquiry received</h3>
+              <p className="body-large mt-4 max-w-2xl mx-auto">
+                Thank you for getting in touch. We&apos;ll review your inquiry and respond with the next
+                steps shortly.
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="bg-slate-50 p-8 rounded-3xl shadow-sm border border-gray-200 space-y-6">
+            <form onSubmit={handleSubmit} className="surface-panel mt-10 space-y-6 p-7 sm:p-9">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                  <label htmlFor="firstName" className="field-label">First Name</label>
                   <input
                     type="text"
                     id="firstName"
                     required
-                    className="block w-full px-4 py-3 border border-gray-300 rounded-xl leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-colors"
+                    className="field-input"
                   />
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                  <label htmlFor="lastName" className="field-label">Last Name</label>
                   <input
                     type="text"
                     id="lastName"
                     required
-                    className="block w-full px-4 py-3 border border-gray-300 rounded-xl leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-colors"
+                    className="field-input"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Work Email</label>
+                <label htmlFor="email" className="field-label">Work Email</label>
                 <input
                   type="email"
                   id="email"
                   required
-                  className="block w-full px-4 py-3 border border-gray-300 rounded-xl leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-colors"
+                  className="field-input"
                 />
               </div>
 
               <div>
-                <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">Company / Organization Name</label>
+                <label htmlFor="company" className="field-label">Company or Organization</label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Building className="h-5 w-5 text-gray-400" />
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+                    <Building className="h-5 w-5 text-[color:var(--foreground-muted)]" />
                   </div>
                   <input
                     type="text"
                     id="company"
                     required
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-colors"
+                    className="field-input pl-11"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="businessType" className="block text-sm font-medium text-gray-700 mb-2">Business Type</label>
+                  <label htmlFor="businessType" className="field-label">Business Type</label>
                   <select
                     id="businessType"
                     required
-                    className="block w-full px-4 py-3 border border-gray-300 rounded-xl leading-5 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-colors appearance-none"
+                    className="field-select"
                   >
                     <option value="">Select type</option>
                     <option value="resort">Resort / Hotel</option>
@@ -159,11 +216,11 @@ export default function Partners() {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="guests" className="block text-sm font-medium text-gray-700 mb-2">Monthly Guests/Clients</label>
+                  <label htmlFor="guests" className="field-label">Monthly Guests or Clients</label>
                   <select
                     id="guests"
                     required
-                    className="block w-full px-4 py-3 border border-gray-300 rounded-xl leading-5 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-colors appearance-none"
+                    className="field-select"
                   >
                     <option value="">Select volume</option>
                     <option value="1-50">1 - 50</option>
@@ -175,19 +232,19 @@ export default function Partners() {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">How can we help you?</label>
+                <label htmlFor="message" className="field-label">How can we help?</label>
                 <textarea
                   id="message"
                   rows={4}
-                  className="block w-full px-4 py-3 border border-gray-300 rounded-xl leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-colors"
-                  placeholder="Tell us about your needs..."
-                ></textarea>
+                  className="field-textarea"
+                  placeholder="Tell us about your guest profile, arrival flow, or preferred setup."
+                />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex justify-center items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-xl transition-all shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
+                className="btn-primary w-full justify-center"
               >
                 {isSubmitting ? 'Sending...' : 'Submit Inquiry'}
                 {!isSubmitting && <ArrowRight className="w-5 h-5" />}

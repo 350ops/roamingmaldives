@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock, Share2 } from 'lucide-react';
 import contentData from '@/data/content.json';
 import ReactMarkdown from 'react-markdown';
+import { ShareActions } from '@/components/ShareActions';
+import { siteConfig } from '@/lib/site';
 
-// This would typically come from a database or CMS
 const getPageContent = (slug: string) => {
   return contentData.find(page => page.slug === slug);
 };
@@ -16,12 +17,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   
   if (!page) {
     return {
-      title: 'Page Not Found | Roaming Maldives',
+      title: `Page Not Found | ${siteConfig.name}`,
     };
   }
 
   return {
-    title: `${page.title} | Roaming Maldives`,
+    title: `${page.title} | ${siteConfig.name}`,
     description: page.description,
     openGraph: {
       title: page.title,
@@ -46,94 +47,61 @@ export default async function ContentPage({ params }: { params: Promise<{ slug: 
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium mb-8 transition-colors">
-          <ArrowLeft className="w-4 h-4 mr-2" />
+    <div className="section-shell min-h-screen">
+      <div className="page-shell max-w-5xl">
+        <Link href="/" className="btn-quiet inline-flex items-center gap-2">
+          <ArrowLeft className="h-4 w-4" />
           Back to Home
         </Link>
 
-        <article className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
-          <div className="h-64 sm:h-80 relative bg-blue-900 w-full overflow-hidden">
-            {/* Abstract background pattern for header */}
-            <div className="absolute inset-0 opacity-20">
-              <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                <defs>
-                  <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1"/>
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#grid-pattern)" />
-              </svg>
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent" />
-            <div className="absolute bottom-0 left-0 p-8 sm:p-12 w-full">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4 drop-shadow-md">
-                {page.title}
-              </h1>
-              <div className="flex flex-wrap items-center gap-4 text-gray-300 text-sm font-medium">
-                <span className="flex items-center gap-1.5">
-                  <Calendar className="w-4 h-4" />
-                  Updated 2026
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Clock className="w-4 h-4" />
-                  4 min read
-                </span>
-              </div>
+        <article className="surface-panel mt-8 overflow-hidden">
+          <div className="border-b border-[color:var(--line)] px-6 py-8 sm:px-10 sm:py-10">
+            <p className="muted-label">{siteConfig.name} guide</p>
+            <h1 className="display-title mt-5 max-w-4xl">{page.title}</h1>
+            <p className="body-large mt-6 max-w-3xl">{page.description}</p>
+            <div className="mt-6 flex flex-wrap items-center gap-4 text-sm font-semibold text-[color:var(--foreground-muted)]">
+              <span className="flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                Updated 2026
+              </span>
+              <span className="flex items-center gap-2">
+                <Clock className="h-4 w-4" />
+                4 min read
+              </span>
             </div>
           </div>
 
-          <div className="p-8 sm:p-12">
-            <div className="prose prose-lg prose-blue max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-blue-600 hover:prose-a:text-blue-800 prose-img:rounded-xl">
+          <div className="px-6 py-8 sm:px-10 sm:py-10">
+            <div className="article-prose max-w-none">
               <ReactMarkdown>{page.content}</ReactMarkdown>
             </div>
 
-            <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-              <div className="flex items-center gap-2 text-gray-500 font-medium">
-                <Share2 className="w-5 h-5" />
+            <div className="mt-12 flex flex-col gap-5 border-t border-[color:var(--line)] pt-8 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center gap-2 font-semibold text-[color:var(--foreground-muted)]">
+                <Share2 className="h-5 w-5" />
                 Share this guide
               </div>
-              <div className="flex gap-3">
-                <button className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full text-sm font-semibold transition-colors">Twitter</button>
-                <button className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full text-sm font-semibold transition-colors">Facebook</button>
-                <button className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full text-sm font-semibold transition-colors">LinkedIn</button>
-              </div>
+              <ShareActions title={page.title} />
             </div>
           </div>
         </article>
 
-        {/* Bottom CTA */}
-        <div className="mt-12 bg-blue-600 rounded-3xl p-8 sm:p-12 text-center text-white shadow-xl relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-              <defs>
-                <pattern id="grid-cta" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1"/>
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#grid-cta)" />
-            </svg>
-          </div>
-          <div className="relative z-10">
-            <h2 className="text-3xl font-bold mb-4">Ready to get connected?</h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Join thousands of travelers who trust Roaming Maldives for their connectivity needs.
+        <div className="surface-card mt-10 grid gap-6 p-7 sm:grid-cols-[1fr_auto] sm:items-end sm:p-8">
+          <div className="max-w-2xl">
+            <p className="muted-label">Next step</p>
+            <h2 className="mt-3 text-2xl">Check your device before you buy.</h2>
+            <p className="body-copy mt-3">
+              If this guide matches your trip, confirm compatibility first and keep the setup
+              straightforward.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link
-                href="/signup"
-                className="bg-white text-blue-600 hover:bg-gray-50 px-8 py-4 rounded-full text-lg font-bold transition-all shadow-lg hover:-translate-y-1"
-              >
-                Get Early Access
-              </Link>
-              <Link
-                href="/device-checker"
-                className="bg-blue-700 hover:bg-blue-800 text-white border border-blue-500 px-8 py-4 rounded-full text-lg font-bold transition-all shadow-lg hover:-translate-y-1"
-              >
-                Check Device
-              </Link>
-            </div>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Link href="/device-checker" className="btn-primary">
+              Check Device
+            </Link>
+            <Link href="/signup" className="btn-secondary">
+              Get Early Access
+            </Link>
           </div>
         </div>
       </div>

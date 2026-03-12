@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { siteConfig } from '@/lib/site';
+import { BrandWordmark } from '@/components/BrandWordmark';
 
 export function Footer() {
   return (
@@ -7,9 +8,11 @@ export function Footer() {
       <div className="page-shell">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr]">
           <div className="max-w-sm">
-            <span className="font-[family:var(--font-display)] text-[2rem] tracking-[-0.05em]">
-              {siteConfig.name}
-            </span>
+            <BrandWordmark
+              className="font-[family:var(--font-display)] text-[2rem] tracking-[-0.05em]"
+              leadClassName="font-normal"
+              trailClassName="font-semibold"
+            />
             <p className="mt-5 text-base leading-7 text-[rgba(245,239,228,0.72)]">
               Practical eSIM guidance for Maldives arrivals, from device checks before you fly to
               support once you land.
